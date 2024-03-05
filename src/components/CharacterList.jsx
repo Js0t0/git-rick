@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
 import Character from "./Character";
 
-
 function NavPage(props) {
   return (
     <header className="d-flex justify-content-between align-item-center ">
-      <button className="btn btn-primary btn-sm mt-3"  onClick={() => props.setPage(props.page - 1)}  disabled={props.page === 1}   >PREV</button>
+      <button
+        className="btn btn-primary btn-sm mt-3"
+        onClick={() => props.setPage(props.page - 1)}
+        disabled={props.page === 1}
+      >
+        PREV
+      </button>
       <p className="text-dark align-item-center ">Pagina: {props.page}</p>
       <button
         className="btn btn-primary btn-sm mt-3"
@@ -16,8 +21,6 @@ function NavPage(props) {
     </header>
   );
 }
-
-
 
 function CharacterList() {
   const [characters, setCharacters] = useState([]);
