@@ -1,23 +1,27 @@
 import { useEffect, useState } from "react";
 import Character from "./Character";
+
+
 function NavPage(props) {
-    return (
-        <header className="d-flex justify-content-between align-item-center ">
-            <p>Page: {props.page}</p>
-            <button className="btn btn-primary btn-sm"
-              onClick={()=> props.setPage(props.page + 1)    }
-            >
-                Page {props.page + 1}
-            </button>
-        </header>
-    )
+  return (
+    <header className="d-flex justify-content-between align-item-center ">
+      <button className="btn btn-primary btn-sm mt-3"  onClick={() => props.setPage(props.page - 1)}  disabled={props.page === 1}   >PREV</button>
+      <p className="text-dark align-item-center ">Pagina: {props.page}</p>
+      <button
+        className="btn btn-primary btn-sm mt-3"
+        onClick={() => props.setPage(props.page + 1)}
+      >
+        NEXT
+      </button>
+    </header>
+  );
 }
+
+
 
 function CharacterList() {
   const [characters, setCharacters] = useState([]);
-  const [page , setPage] = useState(1)
-
-
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     async function fetchData() {
@@ -32,7 +36,7 @@ function CharacterList() {
 
   return (
     <div className="container">
-    <NavPage page= {page} setPage={setPage} />
+      <NavPage page={page} setPage={setPage} />
       <div className="row">
         {characters.map((character) => {
           return (
